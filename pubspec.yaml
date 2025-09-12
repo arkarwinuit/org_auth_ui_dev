@@ -1,7 +1,8 @@
 name: org_auth_ui_dev
 description: Authentication UI widgets (login/signup/2FA) for organizations.
 version: 0.0.1
-homepage: https://github.com/arkarwinuit/org_auth_ui_dev
+repository: https://github.com/arkarwinuit/org_auth_ui_dev.git
+issue_tracker: https://github.com/arkarwinuit/org_auth_ui_dev/issues
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -38,3 +39,5 @@ flutter_gen_l10n:
     output-localization-file: org_auth_localizations.dart
     output-class: OrgAuthLocalizations
     synthetic-package: false
+
+license: MIT
