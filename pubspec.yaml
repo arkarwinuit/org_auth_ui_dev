@@ -1,7 +1,7 @@
 name: org_auth_ui_dev
 description: Authentication UI widgets (login/signup/2FA) for organizations.
 version: 0.0.1
-homepage: https://mit.com/org_auth_ui_dev
+homepage: https://github.com/arkarwinuit/org_auth_ui_dev
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
