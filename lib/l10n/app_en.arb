@@ -1,0 +1,20 @@
+{
+  "@@locale": "en",
+  "signInTitle": "Sign In",
+  "signInSubTitle": "Please enter your details below to continue",
+  "phoneNumberLabel": "Phone Number",
+  "emailLabel": "Email",
+  "passwordLabel": "Password",
+  "signInButton": "Continue",
+  "signUpButton": "Sign Up",
+  "haveNoAccount": "Don't have an account? | ",
+  "or": "or",
+  "signInWithPhone": "Sign In With Phone Number",
+  "signInWithEmail": "Sign In With Email",
+  "phoneempty": "Phone Number cannot be empty",
+  "phoneinvalid": "Phone Number is invalid",
+  "emailempty": "Email cannot be empty",
+  "emailinvalid": "Email is invalid",
+  "passwordempty": "Password cannot be empty",
+  "passwordinvalid": "Password is invalid"
+}
