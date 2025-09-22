@@ -53,7 +53,7 @@ class AuthProvider extends ChangeNotifier {
   final ValueNotifier<bool> isResending = ValueNotifier<bool>(false);
   final ValueNotifier<bool> verifyLoading = ValueNotifier<bool>(false);
 
-  Future<void> submitAuth(String userId, {String? password}) async {
+  Future<SignInResponse> submitAuth(String userId, {String? password}) async {
     signInLoading.value = true;
     _errorMessage = null;
     
@@ -61,12 +61,15 @@ class AuthProvider extends ChangeNotifier {
       // Simulate API call
       await Future.delayed(const Duration(seconds: 1));
       
+      final signInResponse = SignInResponse(isSuccess: true, userId: userId, session: _sessionId, userStatus: 0);
       // In a real app, you would call your authentication API here
       // and handle the response
       debugPrint('Submitted auth for: $userId');
       
+      return signInResponse;
     } catch (e) {
       _errorMessage = e.toString();
+      final signInResponse = SignInResponse(isSuccess: false, userId: userId, session: '', userStatus: 0);
       rethrow;
     } finally {
       signInLoading.value = false;

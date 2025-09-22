@@ -1,6 +1,7 @@
 library org_auth_ui_dev;
 
 export 'src/theme/auth_theme.dart';
+export 'src/models/sign_in_response.dart';
 export 'src/widgets/auth_scaffold.dart';
 export 'src/validation/validators.dart';
 export 'src/views/signin_page.dart';

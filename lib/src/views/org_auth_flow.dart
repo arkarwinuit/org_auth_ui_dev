@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'signin_page.dart';
 import 'verify_otp_page.dart';
 import '../theme/auth_font_family.dart';
+import 'package:org_auth_ui_dev/src/models/sign_in_response.dart';
 
 class OrgAuthFlow extends StatelessWidget {
   static const routeName = '/org-auth-flow';
   final String? initialRoute;
   final String logoAsset;
-  final Future<void> Function(String userId, {String? password}) onSubmit;
+  final Future<SignInResponse> Function(String userId, {String? password}) onSubmit;
   final String version;
   final void Function() openPlayStore;
   final SignInType signInType;
@@ -29,6 +30,7 @@ class OrgAuthFlow extends StatelessWidget {
   final Future<void> Function(String userId, String session) onResendOtp;
   final VoidCallback onSuccessOTP;
   final bool? isAvaliableSignUp;
+  final bool? useOrgAuthRoute;
 
   const OrgAuthFlow({
     super.key,
@@ -55,6 +57,7 @@ class OrgAuthFlow extends StatelessWidget {
     required this.onResendOtp,
     required this.onSuccessOTP,
     this.isAvaliableSignUp,
+    this.useOrgAuthRoute,
   });
 
   @override
@@ -83,6 +86,10 @@ class OrgAuthFlow extends StatelessWidget {
                 signInButtonLabel: signInButtonLabel,
                 signUpButtonLabel: signUpButtonLabel,
                 haveNoAccountLabel: haveNoAccountLabel,
+                useOrgAuthRoute: useOrgAuthRoute!,
+                onVerifyOtp: useOrgAuthRoute! ? onVerifyOtp : null,
+                onResendOtp: useOrgAuthRoute! ? onResendOtp : null,
+                onSuccessOTP: useOrgAuthRoute! ? onSuccessOTP : null,
               ),
             );
           case VerifyOtpPage.routeName:

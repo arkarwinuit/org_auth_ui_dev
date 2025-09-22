@@ -7,6 +7,7 @@ import 'package:org_auth_ui_dev/org_auth_ui_dev.dart';
 import 'package:org_auth_ui_dev/src/theme/auth_textstyle.dart';
 import 'package:org_auth_ui_dev/src/widgets/choose_email_or_phone_button_view.dart';
 import 'package:org_auth_ui_dev/src/widgets/action_button.dart';
+import 'package:org_auth_ui_dev/src/views/verify_otp_page.dart';
 
 enum SignInType {
   emailPassword,
@@ -34,7 +35,7 @@ class SignInPage extends StatefulWidget {
   final String? signInButtonLabel;
   final String? signUpButtonLabel;
   final String? haveNoAccountLabel;
-  final Future<void> Function(String userId, {String? password}) onSubmit;
+  final Future<SignInResponse> Function(String userId, {String? password}) onSubmit;
   final String version;
   final void Function() openPlayStore;
   final SignInType signInType;
@@ -42,6 +43,10 @@ class SignInPage extends StatefulWidget {
   final Color textColor;
   final ValueListenable<bool> signInLoading;
   final List<Country> phoneCountries;
+  final bool useOrgAuthRoute;
+  final Future<bool> Function(String userId, String otp, String session)? onVerifyOtp;
+  final Future<void> Function(String userId, String session)? onResendOtp;
+  final VoidCallback? onSuccessOTP;
 
   const SignInPage({
     super.key,
@@ -67,6 +72,10 @@ class SignInPage extends StatefulWidget {
     this.isAvaliableSignUp = true,
     this.textColor = Colors.black,
     required this.signInLoading,
+    this.useOrgAuthRoute = false,
+    this.onVerifyOtp,
+    this.onResendOtp,
+    this.onSuccessOTP,
     this.phoneCountries = const [
       Country(
         name: "Myanmar",
@@ -108,6 +117,38 @@ class _SignInPageState extends State<SignInPage> {
     _withPhone.dispose();
     _isActionButtonActive.dispose();
     super.dispose();
+  }
+
+  void _navigateToVerifyOtp(SignInResponse signInResponse) {
+    if (widget.useOrgAuthRoute) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => VerifyOtpPage(
+            session: signInResponse.session,
+            userId: signInResponse.userId,
+            userStatus: signInResponse.userStatus,
+            logoAsset: widget.logoAsset,
+            version: widget.version,
+            verifyLoading: ValueNotifier<bool>(false),
+            isResending: ValueNotifier<bool>(false),
+            onVerifyOtp: widget.onVerifyOtp ?? (userId, otp, session) async {
+              // Default implementation - returns false if no callback provided
+              return false;
+            },
+            onResendOtp: widget.onResendOtp ?? (userId, session) async {
+              // Default implementation - does nothing if no callback provided
+            },
+            onSuccessOTP: widget.onSuccessOTP ?? () {
+              // Default implementation - does nothing if no callback provided
+            },
+            backgroundColor: widget.backgroundColor,
+            textColor: widget.textColor,
+            primaryColor: widget.primaryColor,
+          ),
+        ),
+      );
+    }
   }
 
   @override
@@ -391,9 +432,11 @@ class _SignInPageState extends State<SignInPage> {
             isActionButtonActive: _isActionButtonActive,
             onTap: () async {
               if (_formKey.currentState!.validate()) {
+                String userId = '';
                 if (_withPhone.value) {
-                  await widget.onSubmit(
-                    phoneNoCtrl.text,
+                  userId = phoneNoCtrl.text;
+                  final signInResponse = await widget.onSubmit(
+                    userId,
                     password: (widget.signInType == SignInType.emailPassword  || widget.signInType == SignInType.phonePassword)
                         ? passwordController.text 
                         : null,
@@ -403,11 +446,17 @@ class _SignInPageState extends State<SignInPage> {
                     emailCtrl.clear();
                     passwordController.clear();
                     _isActionButtonActive.value = false;
+                    
+                    // Navigate to verify OTP if useOrgAuthRoute is true and sign-in was successful
+                    if (widget.useOrgAuthRoute && signInResponse.isSuccess) {
+                      _navigateToVerifyOtp(signInResponse);
+                    }
                   }
                 }
                 else {
-                  await widget.onSubmit(
-                    emailCtrl.text,
+                  userId = emailCtrl.text;
+                  final signInResponse = await widget.onSubmit(
+                    userId,
                     password: (widget.signInType == SignInType.emailPassword  || widget.signInType == SignInType.phonePassword)
                         ? passwordController.text 
                         : null,
@@ -417,6 +466,11 @@ class _SignInPageState extends State<SignInPage> {
                     passwordController.clear();
                     phoneNoCtrl.clear();
                     _isActionButtonActive.value = false;
+                    
+                    // Navigate to verify OTP if useOrgAuthRoute is true and sign-in was successful
+                    if (widget.useOrgAuthRoute && signInResponse.isSuccess) {
+                      _navigateToVerifyOtp(signInResponse);
+                    }
                   }
                 }
               }

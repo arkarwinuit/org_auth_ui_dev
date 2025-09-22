@@ -79,7 +79,9 @@ class FontFamilyUsageExample extends StatelessWidget {
                       backgroundColor: Colors.white,
                       textColor: Colors.black,
                       logoAsset: 'assets/logo.png',
-                      onSubmit: (userId, {password}) async {},
+                      onSubmit: (userId, {password}) async {
+                        return SignInResponse(isSuccess: true, userId: userId, session: 'session', userStatus: 0);
+                      },
                       version: '1.0.0',
                       openPlayStore: () {},
                       signInType: SignInType.emailPassword,
@@ -139,7 +141,9 @@ class FontFamilyUsageExample extends StatelessWidget {
                       backgroundColor: Colors.white,
                       textColor: Colors.black,
                       logoAsset: 'assets/logo.png',
-                      onSubmit: (userId, {password}) async {},
+                      onSubmit: (userId, {password}) async {
+                        return SignInResponse(isSuccess: true, userId: userId, session: 'session', userStatus: 0);
+                      },
                       version: '1.0.0',
                       openPlayStore: () {},
                       signInType: SignInType.emailPassword,
