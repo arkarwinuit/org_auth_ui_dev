@@ -7,7 +7,6 @@ import 'package:org_auth_ui_dev/org_auth_ui_dev.dart';
 import 'package:org_auth_ui_dev/src/theme/auth_textstyle.dart';
 import 'package:org_auth_ui_dev/src/widgets/choose_email_or_phone_button_view.dart';
 import 'package:org_auth_ui_dev/src/widgets/action_button.dart';
-import 'package:org_auth_ui_dev/src/views/verify_otp_page.dart';
 
 enum SignInType {
   emailPassword,

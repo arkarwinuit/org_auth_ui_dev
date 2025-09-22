@@ -69,7 +69,6 @@ class AuthProvider extends ChangeNotifier {
       return signInResponse;
     } catch (e) {
       _errorMessage = e.toString();
-      final signInResponse = SignInResponse(isSuccess: false, userId: userId, session: '', userStatus: 0);
       rethrow;
     } finally {
       signInLoading.value = false;

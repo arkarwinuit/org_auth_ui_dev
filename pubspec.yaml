@@ -1,6 +1,6 @@
 name: org_auth_ui_dev
 description: Authentication UI widgets (login/signup/2FA) for organizations.
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/arkarwinuit/org_auth_ui_dev.git
 issue_tracker: https://github.com/arkarwinuit/org_auth_ui_dev/issues
 
