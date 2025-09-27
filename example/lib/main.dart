@@ -153,6 +153,10 @@ class AuthFlowDemo extends StatelessWidget {
           debugPrint('Redirecting to app store');
           // launch('market://details?id=your.package.name');
         },
+        onSignUpSubmit: (signUpData) async {
+          return true;
+        },
+        signUpLoading: ValueNotifier<bool>(false),
       ),
     );
   }

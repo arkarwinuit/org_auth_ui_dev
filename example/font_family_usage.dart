@@ -90,7 +90,10 @@ class FontFamilyUsageExample extends StatelessWidget {
                       verifyLoading: ValueNotifier<bool>(false),
                       onVerifyOtp: (userId, otp, session) async => true,
                       onResendOtp: (userId, session) async {},
-                      onSuccessOTP: () {},
+                      onSuccessOTP: () {}, onSignUpSubmit: (signUpData) async {
+                        return true;
+                      },
+                      signUpLoading: ValueNotifier<bool>(false),
                     ),
                   ),
                 );
@@ -152,7 +155,10 @@ class FontFamilyUsageExample extends StatelessWidget {
                       verifyLoading: ValueNotifier<bool>(false),
                       onVerifyOtp: (userId, otp, session) async => true,
                       onResendOtp: (userId, session) async {},
-                      onSuccessOTP: () {},
+                      onSuccessOTP: () {}, onSignUpSubmit: (signUpData) async {
+                        return true;
+                      },
+                      signUpLoading: ValueNotifier<bool>(false),
                     ),
                   ),
                 );

@@ -15,9 +15,23 @@ class ChooseEmailORPhoneButtonView extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+    final orientation = MediaQuery.of(context).orientation;
+    
+    // Calculate height based on orientation for better landscape support
+    double buttonHeight;
+    if (orientation == Orientation.landscape) {
+      // For landscape mode, use a minimum height with screen width consideration
+      buttonHeight = MediaQuery.of(context).size.shortestSide * 0.08;
+      buttonHeight = buttonHeight.clamp(48.0, 60.0); // Ensure reasonable bounds
+    } else {
+      // For portrait mode, use percentage of screen height
+      buttonHeight = screenHeight * 0.06;
+      buttonHeight = buttonHeight.clamp(48.0, 56.0); // Ensure reasonable bounds
+    }
+    
     return SizedBox(
       width: screenWidth,
-      height: screenHeight * 0.06,
+      height: buttonHeight,
       child: TextButton(
         onPressed: () async {
           onTap();

@@ -532,7 +532,7 @@ class _SignInPageState extends State<SignInPage> {
               ),
               InkWell(
                 onTap: () {
-                  // _navigateToSignUp(context);
+                  Navigator.pushNamed(context, SignUpPage.routeName);
                 },
                 child: Text(
                   signUpButton,

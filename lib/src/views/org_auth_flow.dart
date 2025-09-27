@@ -1,10 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'signin_page.dart';
-import 'verify_otp_page.dart';
-import '../theme/auth_font_family.dart';
-import 'package:org_auth_ui_dev/src/models/sign_in_response.dart';
-
+import 'package:org_auth_ui_dev/org_auth_ui_dev.dart';
 class OrgAuthFlow extends StatelessWidget {
   static const routeName = '/org-auth-flow';
   final String? initialRoute;
@@ -31,6 +27,10 @@ class OrgAuthFlow extends StatelessWidget {
   final VoidCallback onSuccessOTP;
   final bool? isAvaliableSignUp;
   final bool? useOrgAuthRoute;
+  final Future<bool> Function(SignUpData signUpData)? onSignUpSubmit;
+  final ValueListenable<bool>? signUpLoading;
+  final VoidCallback? onSignUpBack;
+  final void Function()? onTermsAndConditions;
 
   const OrgAuthFlow({
     super.key,
@@ -58,6 +58,10 @@ class OrgAuthFlow extends StatelessWidget {
     required this.onSuccessOTP,
     this.isAvaliableSignUp,
     this.useOrgAuthRoute,
+    this.onSignUpSubmit,
+    this.signUpLoading,
+    this.onSignUpBack,
+    this.onTermsAndConditions
   });
 
   @override
@@ -79,7 +83,7 @@ class OrgAuthFlow extends StatelessWidget {
                 textColor: textColor,
                 authFontFamily: authFontFamily,
                 signInLoading: signInLoading,
-                isAvaliableSignUp: isAvaliableSignUp ?? true,
+                isAvaliableSignUp: isAvaliableSignUp ?? false,
                 phoneNoLabel: phoneNoLabel,
                 emailLabel: emailLabel,
                 passwordLabel: passwordLabel,
@@ -108,8 +112,85 @@ class OrgAuthFlow extends StatelessWidget {
                 onSuccessOTP: onSuccessOTP,
               ),
             );
+          case SignUpPage.routeName:
+            // Only show sign-up page if it's available, otherwise redirect to sign-in
+            if (isAvaliableSignUp != true) {
+              return MaterialPageRoute(
+                builder: (_) => SignInPage(
+                  logoAsset: logoAsset,
+                  primaryColor: primaryColor,
+                  backgroundColor: backgroundColor,
+                  textColor: textColor,
+                  authFontFamily: authFontFamily,
+                  phoneNoLabel: phoneNoLabel,
+                  emailLabel: emailLabel,
+                  passwordLabel: passwordLabel,
+                  signInButtonLabel: signInButtonLabel,
+                  signUpButtonLabel: signUpButtonLabel,
+                  haveNoAccountLabel: haveNoAccountLabel,
+                  isAvaliableSignUp: isAvaliableSignUp ?? false,
+                  signInLoading: signInLoading,
+                  onSubmit: onSubmit,
+                  version: version,
+                  openPlayStore: openPlayStore,
+                  signInType: signInType,
+                  onVerifyOtp: useOrgAuthRoute! ? onVerifyOtp : null,
+                  onResendOtp: useOrgAuthRoute! ? onResendOtp : null,
+                  onSuccessOTP: useOrgAuthRoute! ? onSuccessOTP : null,
+                  useOrgAuthRoute: useOrgAuthRoute!,
+                ),
+              );
+            }
+            // Provide default implementations if not provided
+            return MaterialPageRoute(
+              builder: (_) => SignUpPage(
+                logoAsset: logoAsset,
+                primaryColor: primaryColor,
+                backgroundColor: backgroundColor,
+                textColor: textColor,
+                authFontFamily: authFontFamily,
+                signUpLoading: signUpLoading ?? ValueNotifier<bool>(false),
+                onSubmit: onSignUpSubmit ?? (signUpData) async {
+                  return true;
+                },
+                onBack: onSignUpBack,
+                signInType: signInType,
+                version: version,
+                onTermsAndConditions: onTermsAndConditions,
+                openPlayStore: openPlayStore,
+                useOrgAuthRoute: useOrgAuthRoute ?? false,
+                onVerifyOtp: useOrgAuthRoute ?? false ? onVerifyOtp : null,
+                onResendOtp: useOrgAuthRoute ?? false ? onResendOtp : null,
+                onSuccessOTP: useOrgAuthRoute ?? false ? onSuccessOTP : null
+              ),
+            );
           default:
-            return null;
+            // For unknown routes, redirect to sign-in page
+            return MaterialPageRoute(
+              builder: (_) => SignInPage(
+                logoAsset: logoAsset,
+                primaryColor: primaryColor,
+                backgroundColor: backgroundColor,
+                textColor: textColor,
+                authFontFamily: authFontFamily,
+                phoneNoLabel: phoneNoLabel,
+                emailLabel: emailLabel,
+                passwordLabel: passwordLabel,
+                signInButtonLabel: signInButtonLabel,
+                signUpButtonLabel: signUpButtonLabel,
+                haveNoAccountLabel: haveNoAccountLabel,
+                isAvaliableSignUp: isAvaliableSignUp ?? false,
+                signInLoading: signInLoading,
+                onSubmit: onSubmit,
+                version: version,
+                openPlayStore: openPlayStore,
+                signInType: signInType,
+                onVerifyOtp: useOrgAuthRoute! ? onVerifyOtp : null,
+                onResendOtp: useOrgAuthRoute! ? onResendOtp : null,
+                onSuccessOTP: useOrgAuthRoute! ? onSuccessOTP : null,
+                useOrgAuthRoute: useOrgAuthRoute!,
+              ),
+            );
         }
       },
     );

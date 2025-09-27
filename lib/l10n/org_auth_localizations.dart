@@ -196,6 +196,126 @@ abstract class OrgAuthLocalizations {
   /// In en, this message translates to:
   /// **'Password is invalid'**
   String get passwordinvalid;
+
+  /// No description provided for @signUpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get signUpTitle;
+
+  /// No description provided for @nameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get nameLabel;
+
+  /// No description provided for @passportRadio.
+  ///
+  /// In en, this message translates to:
+  /// **'Passport'**
+  String get passportRadio;
+
+  /// No description provided for @nrcRadio.
+  ///
+  /// In en, this message translates to:
+  /// **'NRC'**
+  String get nrcRadio;
+
+  /// No description provided for @passportLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Passport Number'**
+  String get passportLabel;
+
+  /// No description provided for @nrcLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'NRC Number'**
+  String get nrcLabel;
+
+  /// No description provided for @dobLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of Birth'**
+  String get dobLabel;
+
+  /// No description provided for @continueLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueLabel;
+
+  /// No description provided for @registerWithPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Register with Phone'**
+  String get registerWithPhone;
+
+  /// No description provided for @registerWithEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Register with Email'**
+  String get registerWithEmail;
+
+  /// No description provided for @nameempty.
+  ///
+  /// In en, this message translates to:
+  /// **'Name cannot be empty'**
+  String get nameempty;
+
+  /// No description provided for @nametoolong.
+  ///
+  /// In en, this message translates to:
+  /// **'Name cannot exceed 70 characters'**
+  String get nametoolong;
+
+  /// No description provided for @emailtoolong.
+  ///
+  /// In en, this message translates to:
+  /// **'Email cannot exceed 50 characters'**
+  String get emailtoolong;
+
+  /// No description provided for @passwordtooshort.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters'**
+  String get passwordtooshort;
+
+  /// No description provided for @confirmpasswordempty.
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm your password'**
+  String get confirmpasswordempty;
+
+  /// No description provided for @passwordmismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwordmismatch;
+
+  /// No description provided for @required.
+  ///
+  /// In en, this message translates to:
+  /// **'Required'**
+  String get required;
+
+  /// No description provided for @nrcnumberinvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'NRC number must be exactly 6 digits'**
+  String get nrcnumberinvalid;
+
+  /// No description provided for @passportnumberinvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid passport number format'**
+  String get passportnumberinvalid;
+
+  /// No description provided for @phoneinvalidshort.
+  ///
+  /// In en, this message translates to:
+  /// **'Please type valid phone number'**
+  String get phoneinvalidshort;
 }
 
 class _OrgAuthLocalizationsDelegate extends LocalizationsDelegate<OrgAuthLocalizations> {

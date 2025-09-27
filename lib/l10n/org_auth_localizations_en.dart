@@ -58,4 +58,64 @@ class OrgAuthLocalizationsEn extends OrgAuthLocalizations {
 
   @override
   String get passwordinvalid => 'Password is invalid';
+
+  @override
+  String get signUpTitle => 'Register';
+
+  @override
+  String get nameLabel => 'Name';
+
+  @override
+  String get passportRadio => 'Passport';
+
+  @override
+  String get nrcRadio => 'NRC';
+
+  @override
+  String get passportLabel => 'Passport Number';
+
+  @override
+  String get nrcLabel => 'NRC Number';
+
+  @override
+  String get dobLabel => 'Date of Birth';
+
+  @override
+  String get continueLabel => 'Continue';
+
+  @override
+  String get registerWithPhone => 'Register with Phone';
+
+  @override
+  String get registerWithEmail => 'Register with Email';
+
+  @override
+  String get nameempty => 'Name cannot be empty';
+
+  @override
+  String get nametoolong => 'Name cannot exceed 70 characters';
+
+  @override
+  String get emailtoolong => 'Email cannot exceed 50 characters';
+
+  @override
+  String get passwordtooshort => 'Password must be at least 6 characters';
+
+  @override
+  String get confirmpasswordempty => 'Please confirm your password';
+
+  @override
+  String get passwordmismatch => 'Passwords do not match';
+
+  @override
+  String get required => 'Required';
+
+  @override
+  String get nrcnumberinvalid => 'NRC number must be exactly 6 digits';
+
+  @override
+  String get passportnumberinvalid => 'Invalid passport number format';
+
+  @override
+  String get phoneinvalidshort => 'Please type valid phone number';
 }
