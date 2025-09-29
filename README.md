@@ -25,6 +25,9 @@ dependencies:
     git:
       url: https://github.com/arkarwinuit/org_auth_ui_dev.git
       ref: main  # or specific version tag
+
+dependency_overrides: # if you need to override intl version
+  intl: ^0.20.2 # if you need to override intl version
 ```
 
 Or using a local path:

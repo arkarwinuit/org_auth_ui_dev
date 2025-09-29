@@ -1,3 +1,14 @@
+/// A Flutter UI package for authentication and admin modules.
+///
+/// This package provides widgets, localization, forms, and reusable components
+/// for authentication and admin workflows in Flutter apps.
+///
+/// Example:
+/// ```dart
+/// import 'package:org_auth_ui_dev/org_auth_ui_dev.dart';
+/// ```
+///
+/// For more details, see the README.
 library org_auth_ui_dev;
 
 export 'src/theme/auth_theme.dart';

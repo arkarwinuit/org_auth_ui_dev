@@ -62,15 +62,18 @@ import 'org_auth_localizations_my.dart';
 /// be consistent with the languages listed in the OrgAuthLocalizations.supportedLocales
 /// property.
 abstract class OrgAuthLocalizations {
-  OrgAuthLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  OrgAuthLocalizations(String locale)
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
   static OrgAuthLocalizations? of(BuildContext context) {
-    return Localizations.of<OrgAuthLocalizations>(context, OrgAuthLocalizations);
+    return Localizations.of<OrgAuthLocalizations>(
+        context, OrgAuthLocalizations);
   }
 
-  static const LocalizationsDelegate<OrgAuthLocalizations> delegate = _OrgAuthLocalizationsDelegate();
+  static const LocalizationsDelegate<OrgAuthLocalizations> delegate =
+      _OrgAuthLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -82,7 +85,8 @@ abstract class OrgAuthLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -318,34 +322,36 @@ abstract class OrgAuthLocalizations {
   String get phoneinvalidshort;
 }
 
-class _OrgAuthLocalizationsDelegate extends LocalizationsDelegate<OrgAuthLocalizations> {
+class _OrgAuthLocalizationsDelegate
+    extends LocalizationsDelegate<OrgAuthLocalizations> {
   const _OrgAuthLocalizationsDelegate();
 
   @override
   Future<OrgAuthLocalizations> load(Locale locale) {
-    return SynchronousFuture<OrgAuthLocalizations>(lookupOrgAuthLocalizations(locale));
+    return SynchronousFuture<OrgAuthLocalizations>(
+        lookupOrgAuthLocalizations(locale));
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en', 'my'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['en', 'my'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_OrgAuthLocalizationsDelegate old) => false;
 }
 
 OrgAuthLocalizations lookupOrgAuthLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en': return OrgAuthLocalizationsEn();
-    case 'my': return OrgAuthLocalizationsMy();
+    case 'en':
+      return OrgAuthLocalizationsEn();
+    case 'my':
+      return OrgAuthLocalizationsMy();
   }
 
   throw FlutterError(
-    'OrgAuthLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
-  );
+      'OrgAuthLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

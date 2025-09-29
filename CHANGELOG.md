@@ -1,10 +1,14 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## [0.0.5] (2025-09-29)
+
+### Fixed
+- **Analysis Issues**: Fixed potential analysis issues detected by pub.dev analysis tools to improve code quality and package compatibility
 
 ## [0.0.4] (2025-09-29)
 
-### Fixed
+### Trying to Fix
 - **Analysis Issues**: Fixed potential analysis issues detected by pub.dev analysis tools to improve code quality and package compatibility
 
 ## [0.0.3] (2025-09-26)

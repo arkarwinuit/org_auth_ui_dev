@@ -99,10 +99,12 @@ class OrgAuthLocalizationsMy extends OrgAuthLocalizations {
   String get emailtoolong => 'အီးမေးလ်က အလုံးရေ ၅၀ ထက်ကျော်နေပါသည်';
 
   @override
-  String get passwordtooshort => 'လျှို့ဝှက်နံပါတ်က အလုံးရေ ၆ နှင့် အထက် ရှိရပါမည်';
+  String get passwordtooshort =>
+      'လျှို့ဝှက်နံပါတ်က အလုံးရေ ၆ နှင့် အထက် ရှိရပါမည်';
 
   @override
-  String get confirmpasswordempty => 'လျှို့ဝှက်နံပါတ်က အလုံးရေ ၆ ထက်ကျော်နေပါသည်';
+  String get confirmpasswordempty =>
+      'လျှို့ဝှက်နံပါတ်က အလုံးရေ ၆ ထက်ကျော်နေပါသည်';
 
   @override
   String get passwordmismatch => 'လျှို့ဝှက်နံပါတ် ၂ခုသည် မတူနေပါ';

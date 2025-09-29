@@ -826,7 +826,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 child: popupWidget,
                               );
                             },
-                            itemBuilder: (context, String item, bool isSelected) {
+                            itemBuilder: (context, String item, bool isDisabled, bool isSelected) {
                               return SizedBox(
                                 height: 45,
                                 child: ListTile(
@@ -843,14 +843,14 @@ class _SignUpPageState extends State<SignUpPage> {
                               );
                             },
                           ),
-                          dropdownDecoratorProps: DropDownDecoratorProps(
+                          decoratorProps: DropDownDecoratorProps(
                             baseStyle: getText(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                               color: widget.textColor,
                               fontFamily: widget.effectiveFontFamily,
                             ),
-                            dropdownSearchDecoration: InputDecoration(
+                            decoration: InputDecoration(
                               filled: true,
                               fillColor: Theme.of(context).cardColor,
                               focusedBorder: OutlineInputBorder(
@@ -887,7 +887,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                             ),
                           ),
-                          items: NrcData().nrcPrefix,
+                          items: (filter, loadProps) async => NrcData().nrcPrefix,
                           selectedItem: selectedPrefix,
                           onChanged: (String? value) {
                             setState(() {
@@ -933,7 +933,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 child: popupWidget,
                               );
                             },
-                            itemBuilder: (context, String item, bool isSelected) {
+                            itemBuilder: (context, String item, bool isDisabled, bool isSelected) {
                               return SizedBox(
                                 height: 45,
                                 child: ListTile(
@@ -949,14 +949,14 @@ class _SignUpPageState extends State<SignUpPage> {
                               );
                             },
                           ),
-                          dropdownDecoratorProps: DropDownDecoratorProps(
+                          decoratorProps: DropDownDecoratorProps(
                             baseStyle: getText(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                               color: widget.textColor,
                               fontFamily: widget.effectiveFontFamily,
                             ),
-                            dropdownSearchDecoration: InputDecoration(
+                            decoration: InputDecoration(
                               filled: true,
                               fillColor: Theme.of(context).cardColor,
                               focusedBorder: OutlineInputBorder(
@@ -993,7 +993,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                             ),
                           ),
-                          items: selectedRegionList,
+                          items: (filter, loadProps) async => selectedRegionList,
                           selectedItem: selectedRegion,
                           onChanged: (String? value) {
                             setState(() {
@@ -1038,7 +1038,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 child: popupWidget,
                               );
                             },
-                            itemBuilder: (context, String item, bool isSelected) {
+                            itemBuilder: (context, String item, bool isDisabled, bool isSelected) {
                               return SizedBox(
                                 height: 45,
                                 child: ListTile(
@@ -1054,14 +1054,14 @@ class _SignUpPageState extends State<SignUpPage> {
                               );
                             },
                           ),
-                          dropdownDecoratorProps: DropDownDecoratorProps(
+                          decoratorProps: DropDownDecoratorProps(
                             baseStyle: getText(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                               color: widget.textColor,
                               fontFamily: widget.effectiveFontFamily,
                             ),
-                            dropdownSearchDecoration: InputDecoration(
+                            decoration: InputDecoration(
                               filled: true,
                               fillColor: Theme.of(context).cardColor,
                               focusedBorder: OutlineInputBorder(
@@ -1098,7 +1098,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                             ),
                           ),
-                          items: NrcData().nrcPostfix,
+                          items: (filter, loadProps) async => NrcData().nrcPostfix,
                           selectedItem: selectedPostfix,
                           onChanged: (String? value) {
                             setState(() {
