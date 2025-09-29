@@ -1,6 +1,6 @@
 name: org_auth_ui_dev
 description: Authentication UI widgets (login/signup/2FA) for organizations.
-version: 0.0.3
+version: 0.0.4
 repository: https://github.com/arkarwinuit/org_auth_ui_dev.git
 issue_tracker: https://github.com/arkarwinuit/org_auth_ui_dev/issues
 
@@ -13,8 +13,8 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  flutter_form_builder: ^9.5.0
-  form_builder_validators: ^11.1.2
+  flutter_form_builder: ">=9.2.0 <10.0.0"
+  form_builder_validators: ">=11.1.2 <12.0.0"
   provider: ^6.0.1
   pin_code_fields: ^8.0.1
   intl: ">=0.19.0 <0.21.0"
