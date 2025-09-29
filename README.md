@@ -25,9 +25,11 @@ dependencies:
     git:
       url: https://github.com/arkarwinuit/org_auth_ui_dev.git
       ref: main  # or specific version tag
-
-dependency_overrides: # if you need to override intl version
-  intl: ^0.20.2 # if you need to override intl version
+# That is important. If you need to override intl version it will override the intl version in the package. Because package use 0.20.2 version of intl
+# If you need to override flutter_form_builder version it will override the flutter_form_builder version in the package. Because package use 10.1.0 version of flutter_form_builder
+dependency_overrides: 
+  intl: ^0.19.0 
+  flutter_form_builder: ^9.5.0 
 ```
 
 Or using a local path:
@@ -51,6 +53,17 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^6.0.5  # For state management
+  intl: ^0.20.2 # For internationalization
+  flutter_form_builder: ^10.1.0 # For form builder
+  intl_phone_field: ^3.2.0 # For phone number input
+  dropdown_search: ^6.0.2 # For dropdown search
+
+
+# That is important. If you need to override intl version it will override the intl version in the package. Because package use 0.20.2 version of intl
+# If you need to override flutter_form_builder version it will override the flutter_form_builder version in the package. Because package use 10.1.0 version of flutter_form_builder
+dependency_overrides: 
+  intl: ^0.19.0 
+  flutter_form_builder: ^9.5.0 
 ```
 
 ### 2. Setup Provider
